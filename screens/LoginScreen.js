@@ -6,11 +6,11 @@ export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const { login } = useAuth();
 
-  const handleLogin = () => {
-    if (!username.trim()) return;
-    login(username.trim());
-    navigation.replace('Home');
-  };
+ const handleLogin = async () => {
+  if (!username.trim()) return;
+  await login(username.trim());
+  // navigation.replace('Home') KALDIRILDI
+};
 
   return (
     <View style={styles.container}>

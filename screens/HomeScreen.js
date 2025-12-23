@@ -6,16 +6,23 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome, {user?.username}</Text>
+      <Text style={styles.text}>
+        Welcome, {user?.username}
+      </Text>
 
-      <Pressable style={styles.button} onPress={() => navigation.navigate('Settings')}>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate('Settings')}
+      >
         <Text style={styles.buttonText}>Go to Settings</Text>
       </Pressable>
 
-      <Pressable style={[styles.button, styles.logout]} onPress={() => {
-        logout();
-        navigation.replace('Login');
-      }}>
+      <Pressable
+        style={[styles.button, styles.logout]}
+        onPress={async () => {
+          await logout();
+        }}
+      >
         <Text style={styles.buttonText}>Logout</Text>
       </Pressable>
     </View>
@@ -23,9 +30,28 @@ export default function HomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', padding: 24, gap: 12 },
-  text: { fontSize: 20, fontWeight: '600' },
-  button: { backgroundColor: '#222', padding: 12, borderRadius: 8, alignItems: 'center' },
-  logout: { backgroundColor: '#555' },
-  buttonText: { color: '#fff', fontWeight: '600' },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 24,
+    gap: 12,
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  button: {
+    backgroundColor: '#222',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  logout: {
+    backgroundColor: '#555',
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: '600',
+  },
 });
